@@ -8,7 +8,9 @@ Amplitude can be a value from 0 to 1.
 No arguments provided will result in a wave where frequency = 440, samplerate = 44100, amplitude = 1, and seconds = 1.
 
 ### Example:
+```
 python3 sintest.py 100 44100 1 3
+```
 This would generate a sine wave with a frequency of 100 Hz. 44100 samples would be taken to create one second worth of data.
 Then that data would be copied to provide as much data as needed to produce 3 seconds.
 
