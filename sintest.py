@@ -38,10 +38,10 @@ def cli_arguments():
 	number_of_arguments = len(sys.argv)
 
 	if number_of_arguments == 5:
-		frequency = float(minimum_boundary_check(sys.argv[1]))
-		samplerate = float(minimum_boundary_check(sys.argv[2]))
-		amplitude = float(amplitude_boundary_check(sys.argv[3]))
-		seconds    = int(minimum_boundary_check(sys.argv[4]))
+		frequency = minimum_boundary_check(float(sys.argv[1]))
+		samplerate = minimum_boundary_check(float(sys.argv[2]))
+		amplitude = amplitude_boundary_check(float(sys.argv[3]))
+		seconds = minimum_boundary_check(int(sys.argv[4]))
 		print("all args!")
 	
 	
@@ -75,17 +75,42 @@ def make_wav_file(samplerate, input_data):
 	w.setframerate(samplerate)
 
 	for sample in input_data:
-		data = struct.pack('<h', sample)
+		data = struct.pack('<h', int(sample))
+		w.writeframes(data)
+
+	w.close()
+
+
+def make_wav_file2(samplerate, input_data, input_data_2):
+	w = wave.open("testwave.wav", 'wb')
+	w.setnchannels(1)
+	w.setsampwidth(2)
+	w.setframerate(samplerate)
+
+	for sample in input_data:
+		data = struct.pack('<h', int(sample))
+		w.writeframes(data)
+	
+	for sample in input_data_2:
+		data = struct.pack('h', int(sample))
 		w.writeframes(data)
 
 	w.close()
 
 #--------------------------------------------------------------------------------
 
+
 cli_arguments()
 generated_data = generate_data(frequency, samplerate, amplitude, max_amplitude)
-completed_data = extend_data()
-print(len(generated_data))
-print(len(completed_data))
-make_wav_file(samplerate, completed_data)
+#completed_data = extend_data()
+
+gendata2 = generate_data(100, 44100, .1, max_amplitude)
+#completed_data_2 = extend_data()
+
+completed_data_2 = [(generated_data[i] + gendata2[i]) for i in range(len(gendata2))]
+
+
+#make_wav_file(samplerate, completed_data)
+make_wav_file(samplerate, completed_data_2)
+#make_wav_file2(samplerate, completed_data, completed_data_2)
 
