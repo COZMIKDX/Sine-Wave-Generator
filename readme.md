@@ -17,6 +17,11 @@ Then that data would be copied to provide as much data as needed to produce 3 se
 Lastly, writing the data to a wave file currently takes the longest.
 This is more noticeable once you try to make more than a few seconds of data.
 
+## To Do
+- make a way to name the output file
+- maybe make a gui
+- it can combine multiple waves but needs a way to do that without editing the code
+
 ## Some notes I took while making this.
  "sample" here would be x-value a graph. 1000 samples would be from x=0 to x=1000.
  A "second" is represented on the same graph as some amount of samples.
