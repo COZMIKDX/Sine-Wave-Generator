@@ -23,7 +23,7 @@ This is more noticeable once you try to make more than a few seconds of data.
 - it can combine multiple waves but needs a way to do that without editing the code
 
 ## Some notes I took while making this.
- "sample" here would be x-value a graph. 1000 samples would be from x=0 to x=1000.
+ "sample" here would be the x-value on a graph. 1000 samples would be from x=0 to x=1000.
  A "second" is represented on the same graph as some amount of samples.
  A regular sin(x) would complete one cycle in 2pi samples (about every x=2pi=6.238 on a graph).
 
